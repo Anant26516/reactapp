@@ -5,12 +5,13 @@ function Login() {
 
  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError('');
+    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+     console.log('Logging in with:', formData);
+     alert('Login successful!');
   };
 
  
@@ -22,7 +23,7 @@ function Login() {
           <form onSubmit={handleSubmit}>
             <div className="formgroup">
               <input
-                onChange={handleChangee} 
+                onChange={handleChange}
                 value={formData.email}
                 type="text"
                 placeholder="Email"
@@ -32,11 +33,11 @@ function Login() {
             </div>
             <div className="formgroup">
               <input
-                onChnage={handleChange} 
+                onChange={handleChange}
                 value={formData.password}
                 type="text"
                 placeholder="Password"
-                name="pass"
+                name="password"
                 required
               />
             </div>
