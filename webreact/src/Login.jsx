@@ -1,32 +1,29 @@
 import React, { useState } from "react";
 
 function Login() {
-  const [formData, setFormData]  = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
- const handleChange = (e) => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    
+
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     console.log('Logging in with:', formData);
-     alert('Login successful!');
+    console.log(formData);
   };
-
- 
 
   return (
     <>
       <div className="login">
         <div className="login-box">
-          <form onSubmit={handleSubmit}>
+          <form >
             <div className="formgroup">
               <input
                 onChange={handleChange}
                 value={formData.email}
                 type="text"
-                placeholder="Email"
+                placeholder="Email1"
                 name="email"
                 required
               />
@@ -42,9 +39,7 @@ function Login() {
               />
             </div>
 
-            <button type="button">
-              Submit
-            </button>
+            <button type="button" onClick={handleSubmit}>Submit</button>
           </form>
         </div>
       </div>
