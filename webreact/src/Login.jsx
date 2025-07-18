@@ -1,23 +1,29 @@
 import React, { useState } from "react";
 
 function Login() {
-  const [form, setForm] = useState({});
+  const [formData, setFormData]  = useState({ email: '', password: '' });
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log(form);
+ const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError('');
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
+ 
 
   return (
     <>
       <div className="login">
         <div className="login-box">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="formgroup">
               <input
-                onChange={(e) => {
-                  setForm({ ...form, email: e.target.value });
-                }}
+                onChange={handleChangee} 
+                value={formData.email}
                 type="text"
                 placeholder="Email"
                 name="email"
@@ -25,10 +31,17 @@ function Login() {
               />
             </div>
             <div className="formgroup">
-              <input type="text" placeholder="Password" name="pass" required />
+              <input
+                onChnage={handleChange} 
+                value={formData.password}
+                type="text"
+                placeholder="Password"
+                name="pass"
+                required
+              />
             </div>
 
-            <button type="button" onClick={handleLogin}>
+            <button type="button">
               Submit
             </button>
           </form>
